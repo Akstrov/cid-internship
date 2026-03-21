@@ -1,0 +1,123 @@
+<!-- src/app/components/viewer/viewer.component.html -->
+<div class="app-shell">
+
+  <!-- ── Top bar ─────────────────────────────────────────────────────── -->
+  <header class="topbar">
+    <span class="topbar-title">ITSEOA Dataset Viewer</span>
+    <span class="topbar-meta" *ngIf="status">
+      {{ status.total }} pairs &nbsp;·&nbsp;
+      <span class="source-badge">{{ status.source }}</span>
+    </span>
+  </header>
+
+  <div class="main-layout">
+
+    <!-- ── Left panel: pair list ───────────────────────────────────────── -->
+    <aside class="sidebar">
+
+      <div class="search-bar">
+        <input
+          type="text"
+          placeholder="Search defect or fiche…"
+          (input)="onSearchInput($any($event.target).value)"
+        />
+      </div>
+
+      <div class="list-meta">
+        {{ totalPairs }} result{{ totalPairs !== 1 ? 's' : '' }}
+      </div>
+
+      <ul class="pair-list">
+        <li
+          *ngFor="let p of pairs"
+          class="pair-item"
+          [class.selected]="p._id === selectedId"
+          (click)="selectPair(p._id)"
+        >
+          <div class="pair-fiche">Fiche {{ p.fiche }}</div>
+          <div class="pair-defect">{{ p.defect }}</div>
+          <div class="pair-meta">p.{{ p.page }} &nbsp;·&nbsp; {{ p.layout }}</div>
+        </li>
+      </ul>
+
+      <!-- Pagination -->
+      <div class="pagination" *ngIf="totalPages > 1">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">‹</button>
+        <span>{{ currentPage }} / {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">›</button>
+      </div>
+
+    </aside>
+
+    <!-- ── Right panel: detail view ────────────────────────────────────── -->
+    <main class="detail-panel">
+
+      <!-- Empty state -->
+      <div class="empty-state" *ngIf="!selectedId">
+        <div class="empty-icon">🔍</div>
+        <p>Select a pair from the list to inspect it</p>
+      </div>
+
+      <!-- Loading -->
+      <div class="loading" *ngIf="selectedId && loadingDetail">
+        Loading…
+      </div>
+
+      <!-- Pair detail -->
+      <div class="pair-detail" *ngIf="detail && !loadingDetail">
+
+        <div class="detail-header">
+          <h2>Fiche {{ detail.fiche }}</h2>
+          <span class="layout-badge">{{ detail.layout }}</span>
+          <span class="page-badge">p.{{ detail.page }}</span>
+        </div>
+        <p class="detail-defect">{{ detail.defect }}</p>
+        <p class="detail-source">{{ detail.source_pdf }}</p>
+
+        <!-- Image -->
+        <div class="image-container">
+          <img
+            *ngIf="imageUrl"
+            [src]="imageUrl"
+            alt="{{ detail.defect }}"
+            class="defect-image"
+          />
+        </div>
+
+        <!-- Commentary sections -->
+        <div class="commentary">
+
+          <ng-container *ngIf="detail.commentary.intro || detail.commentary.causes">
+            <!-- Structured sections (Layout A) -->
+            <div class="section" *ngIf="detail.commentary.intro">
+              <div class="section-label">Description</div>
+              <p>{{ detail.commentary.intro }}</p>
+            </div>
+            <div class="section" *ngIf="detail.commentary.causes">
+              <div class="section-label">Causes probables</div>
+              <p>{{ detail.commentary.causes }}</p>
+            </div>
+            <div class="section" *ngIf="detail.commentary.gravite">
+              <div class="section-label">Gravité</div>
+              <p>{{ detail.commentary.gravite }}</p>
+            </div>
+            <div class="section" *ngIf="detail.commentary.suites">
+              <div class="section-label">Suites à donner</div>
+              <p>{{ detail.commentary.suites }}</p>
+            </div>
+          </ng-container>
+
+          <!-- Fallback: show full commentary if no sections -->
+          <ng-container *ngIf="!detail.commentary.intro && detail.commentary.full">
+            <div class="section">
+              <div class="section-label">Commentaire</div>
+              <p>{{ detail.commentary.full }}</p>
+            </div>
+          </ng-container>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>

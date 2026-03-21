@@ -1,0 +1,36 @@
+flowchart TB
+
+    subgraph Data_Layer["Data Layer"]
+        IMG["Inspection Images (Barrages)"]
+        SENS["Sensor Data<br>(Pressure, Deformation, Water Level, etc.)"]
+        DB["Central Database"]
+        IMG --> DB
+        SENS --> DB
+    end
+
+    subgraph Analysis_Layer["Analysis & AI Layer"]
+        VA["Vision Agent<br>(Image Analysis)"]
+        SA["Sensor Agent<br>(Time-Series Analysis)"]
+        RA["Reasoning Agent<br>(Fusion & Engineering Logic)"]
+    end
+
+    subgraph Intelligence_Layer["Intelligence & Interaction Layer"]
+        TA["Text Generation Agent<br>(Technical Commentary)"]
+        QA["NL Query Agent<br>(Natural Language Queries)"]
+    end
+
+    subgraph User_Layer["User Layer"]
+        ENG["Engineer / User"]
+    end
+
+    DB --> VA
+    DB --> SA
+
+    VA --> RA
+    SA --> RA
+
+    RA --> TA
+    RA --> QA
+
+    TA --> ENG
+    QA --> ENG

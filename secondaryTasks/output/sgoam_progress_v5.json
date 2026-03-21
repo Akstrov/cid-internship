@@ -1,0 +1,423 @@
+{
+  "version": 5,
+  "mappings": {
+    "0||DRE": {
+      "screen": "Franchissement",
+      "field": "DRE",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_REGION"
+        }
+      ],
+      "note": "CODE_REGION est dénormalisé dans FRANADMIN sans FK déclarée vers REGION. Le chemin normalisé est FRANADMIN.CODE_PROV → PROVINCE.CODE_PROV → PROVINCE.CODE_REG → REGION.CODE_REG. La valeur insérée doit être cohérente avec CODE_PROV.",
+      "path": []
+    },
+    "0||DPE": {
+      "screen": "Franchissement",
+      "field": "DPE",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_PROV"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_PROV → PROVINCE.CODE_PROV. Le libellé de la province est dans PROVINCE.LIB_PROV.",
+      "path": []
+    },
+    "0||Fiche établie le:": {
+      "screen": "Franchissement",
+      "field": "Fiche établie le:",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "DATESAISIE"
+        }
+      ],
+      "note": "Date de création de la fiche. Type DATE, pas de FK.",
+      "path": []
+    },
+    "0||Date dernière MAJ": {
+      "screen": "Franchissement",
+      "field": "Date dernière MAJ",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "DATEMAJ"
+        }
+      ],
+      "note": "Date de dernière mise à jour générale. DATEMAJ_FRAN existe aussi pour les mises à jour spécifiques au franchissement. Lors de la migration, renseigner les deux colonnes.",
+      "path": []
+    },
+    "0||Numéro d'incrémentation": {
+      "screen": "Franchissement",
+      "field": "Numéro d'incrémentation",
+      "type": "Valeur incrémentée automatiquement",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "IDENTIFIANT"
+        }
+      ],
+      "note": "Clé primaire VARCHAR2(8), générée automatiquement. Référencée comme FK dans OARG, VISITE, T_FRAN_VFT, HIST_FRAN, PHOTOS_OUV.",
+      "path": []
+    },
+    "0||Voie portée||Type": {
+      "screen": "Franchissement",
+      "field": "Type",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_VPT"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_VPT → VOIES_PORTEE_TYPE.CODE_VPT. Libellé dans VOIES_PORTEE_TYPE.LIB_VP_TYPE.",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Voie portée||Numéro": {
+      "screen": "Franchissement",
+      "field": "Numéro",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "VP_NUM"
+        }
+      ],
+      "note": "Numéro de la route portante. NUMBER(5), pas de FK.",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Voie portée||Pk": {
+      "screen": "Franchissement",
+      "field": "Pk",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "VP_PK"
+        }
+      ],
+      "note": "Point kilométrique. NUMBER(8,3), pas de FK.",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Voie portée||Implantation": {
+      "screen": "Franchissement",
+      "field": "Implantation",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_IMP_VP"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_IMP_VP → IMPLANTATION_TRACE.CODE_IMP_VP. Concerne le tracé de la voie portante (en alignement, en courbe, etc.).",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Voie portée||Longueur totale franchissement": {
+      "screen": "Franchissement",
+      "field": "Longueur totale franchissement",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "LONGUEUR"
+        }
+      ],
+      "note": "Longueur totale du franchissement en mètres. NUMBER(7,2), pas de FK.",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Voie portée||Revêtement": {
+      "screen": "Franchissement",
+      "field": "Revêtement",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_REVET_CH"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_REVET_CH → REVET_CHAUSSEE.CODE_REVET_CH. Libellé dans REVET_CHAUSSEE.LIB_REVET_CH.",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Voie portée||Possibilité de déviation": {
+      "screen": "Franchissement",
+      "field": "Possibilité de déviation",
+      "type": "Bouton de choix (booléen)",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "DEVIATION"
+        }
+      ],
+      "note": "Booléen VARCHAR2(3), valeurs O/N ou OUI/NON. Pas de FK.",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Voie portée||Classe trafic": {
+      "screen": "Franchissement",
+      "field": "Classe trafic",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_CL_TRAFIC"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_CL_TRAFIC → CLASSE_TRAFIC.CODE_CL_TRAFIC. Libellé dans CLASSE_TRAFIC.LIB_CL_TRAFIC.",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Historique": {
+      "screen": "Franchissement",
+      "field": "Historique",
+      "type": "Bouton",
+      "cols": [
+        {
+          "table": "HIST_FRAN",
+          "col": "IDENTIFIANT"
+        }
+      ],
+      "note": "Données historiques du franchissement. Écrites automatiquement par l'application à chaque modification dans HIST_FRAN. Pour la migration, les données historiques existantes doivent être insérées dans HIST_FRAN avec HIST_FRAN.IDENTIFIANT → FRANADMIN.IDENTIFIANT et HIST_FRAN.CODE_PROV → PROVINCE.CODE_PROV.",
+      "path": []
+    },
+    "0||Voie portée||Pont sur:": {
+      "screen": "Franchissement",
+      "field": "Pont sur:",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "T_FRAN_VFT",
+          "col": "IDENTIFIANT"
+        },
+        {
+          "table": "T_FRAN_VFT",
+          "col": "CODE_VFT"
+        }
+      ],
+      "note": "Ne va pas dans FRANADMIN. Table de jonction T_FRAN_VFT car un franchissement peut croiser plusieurs obstacles. FK déclarées : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.CODE_VFT, T_FRAN_VFT.IDENTIFIANT → FRANADMIN.IDENTIFIANT, T_FRAN_VFT.CODE_PROV → PROVINCE.CODE_PROV. CODE_VFT + IDENTIFIANT forment la clé logique unique (pas d'index unique déclaré dans le SQL). CODE_PROV est copié depuis FRANADMIN par dénormalisation.",
+      "path": [
+        "Voie portée"
+      ]
+    },
+    "0||Voie portée||Restriction d'exploitation||Restriction de circulation": {
+      "screen": "Franchissement",
+      "field": "Restriction de circulation",
+      "type": "Bouton de choix (booléen)",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "RESTRICTION"
+        }
+      ],
+      "note": "Booléen VARCHAR2(3), pas de FK.",
+      "path": [
+        "Voie portée",
+        "Restriction d'exploitation"
+      ]
+    },
+    "0||Voie portée||Restriction d'exploitation||PTC": {
+      "screen": "Franchissement",
+      "field": "PTC",
+      "type": "Valeur importée",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "PTC"
+        }
+      ],
+      "note": "Port total en charge en tonnes. NUMBER(2), pas de FK. Valeur importée depuis les données officielles de restriction de charge.",
+      "path": [
+        "Voie portée",
+        "Restriction d'exploitation"
+      ]
+    },
+    "0||Voie portée||Restriction d'exploitation||Vitesse Limite Signalée": {
+      "screen": "Franchissement",
+      "field": "Vitesse Limite Signalée",
+      "type": "Valeur importée",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "VL_VP"
+        }
+      ],
+      "note": "Vitesse limite en km/h. NUMBER(3), pas de FK. VL = Vitesse Limite, VP = Voie Portée.",
+      "path": [
+        "Voie portée",
+        "Restriction d'exploitation"
+      ]
+    },
+    "0||Voie portée||Restriction d'exploitation||Hauteur Limite Signalée": {
+      "screen": "Franchissement",
+      "field": "Hauteur Limite Signalée",
+      "type": "Valeur importée",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "HL_VP"
+        }
+      ],
+      "note": "Hauteur limite en mètres. NUMBER(7,2), pas de FK. HL = Hauteur Limite, VP = Voie Portée.",
+      "path": [
+        "Voie portée",
+        "Restriction d'exploitation"
+      ]
+    },
+    "0||Voie portée||Restriction d'exploitation||Largeur Limite Signalée": {
+      "screen": "Franchissement",
+      "field": "Largeur Limite Signalée",
+      "type": "Valeur importée",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "LL_VP"
+        }
+      ],
+      "note": "Largeur limite en mètres. NUMBER(7,2), pas de FK. LL = Largeur Limite, VP = Voie Portée.",
+      "path": [
+        "Voie portée",
+        "Restriction d'exploitation"
+      ]
+    },
+    "0||Voie Franchie||Type||Code": {
+      "screen": "Franchissement",
+      "field": "Code",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "T_FRAN_VFT",
+          "col": "CODE_VFT"
+        }
+      ],
+      "note": "Même table et même colonne que \"Pont sur\". Code et Type de Voie Franchie sont deux représentations du même champ dans T_FRAN_VFT. FK : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.CODE_VFT.",
+      "path": [
+        "Voie Franchie",
+        "Type"
+      ]
+    },
+    "0||Voie Franchie||Type||Type de Voie Franchie": {
+      "screen": "Franchissement",
+      "field": "Type de Voie Franchie",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "VOIES_FRANCHIES_TYPE",
+          "col": "LIB_VFT"
+        }
+      ],
+      "note": "Valeur en lecture seule, non stockée directement. Résolue automatiquement par jointure : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.LIB_VFT. Aucune insertion nécessaire pour ce champ lors de la migration.",
+      "path": [
+        "Voie Franchie",
+        "Type"
+      ]
+    },
+    "0||Détail des Ouvrages||Nombre d'ouvrage(s)": {
+      "screen": "Franchissement",
+      "field": "Nombre d'ouvrage(s)",
+      "type": "Valeur calculée",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "NBOA"
+        }
+      ],
+      "note": "Valeur dénormalisée NUMBER(2). Maintenue automatiquement par l'application à chaque ajout ou suppression d'un ouvrage. Pas de FK. Peut être recalculée par COUNT sur OARG.IDENTIFIANT.",
+      "path": [
+        "Détail des Ouvrages"
+      ]
+    },
+    "0||Détail des Ouvrages||Liste||N° d'ordre": {
+      "screen": "Franchissement",
+      "field": "N° d'ordre",
+      "type": "Bouton",
+      "cols": [
+        {
+          "table": "OARG",
+          "col": "NUM_ORDRE"
+        }
+      ],
+      "note": "Numéro d'ordre de l'ouvrage dans le franchissement, ordonné par PK croissant. NUMBER(2). FK : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT. Type Bouton dans le dashboard mais c'est un vrai champ de données.",
+      "path": [
+        "Détail des Ouvrages",
+        "Liste"
+      ]
+    },
+    "0||Détail des Ouvrages||Liste||Désignation": {
+      "screen": "Franchissement",
+      "path": [
+        "Détail des Ouvrages",
+        "Liste"
+      ],
+      "field": "Désignation",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "OARG",
+          "col": "IDENTIFIANT_TXT"
+        }
+      ],
+      "note": "Désignation de l'ouvrage dans la liste du franchissement. OARG.IDENTIFIANT_TXT est le candidat le plus probable (VARCHAR2(8), texte de l'identifiant). Cependant ce champ est NULL dans les données d'exemple — à confirmer avec le client. L'alternative est OARG.IDENTIFIANT lui-même."
+    },
+    "0||Détail des Ouvrages||Liste||Long Biaise": {
+      "screen": "Franchissement",
+      "field": "Long Biaise",
+      "type": "Valeur importée",
+      "cols": [
+        {
+          "table": "OARG",
+          "col": "LONG_BIAISE"
+        }
+      ],
+      "note": "Longueur biaisée de l'ouvrage individuel en mètres. NUMBER(7,2). Valeur importée depuis OARG via FK : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT. Affiché en lecture seule dans l'écran Franchissement.",
+      "path": [
+        "Détail des Ouvrages",
+        "Liste"
+      ]
+    },
+    "0||Détail des Ouvrages||Liste||Ajouter un ouvrage": {
+      "screen": "Franchissement",
+      "field": "Ajouter un ouvrage",
+      "type": "Bouton",
+      "cols": [],
+      "note": "Bouton de navigation uniquement. Ouvre l'écran Détails Ouvrage pour créer un nouvel enregistrement OARG. La saisie des données se fait dans cet écran, pas dans Franchissement.",
+      "path": [
+        "Détail des Ouvrages",
+        "Liste"
+      ]
+    },
+    "0||Voie Franchie||Implantation": {
+      "screen": "Franchissement",
+      "path": [
+        "Voie Franchie"
+      ],
+      "field": "Implantation",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_IMP_VF"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_IMP_VF → IMPLANTATION_OBSTACLE.CODE_IMP_VF. Concerne l'implantation de l'obstacle franchi. Différent de CODE_IMP_VP (voie portée) qui utilise IMPLANTATION_TRACE — deux tables de référence distinctes."
+    }
+  }
+}

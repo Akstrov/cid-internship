@@ -1,0 +1,105 @@
+<div class="upload-panel">
+  <h2 class="upload-title">Upload New Pair</h2>
+  <p class="upload-subtitle">Add an inspection image and commentary to the dataset.</p>
+
+  @if (success) {
+    <div class="alert alert-success">
+      ✓ Pair uploaded successfully and added to the dataset.
+    </div>
+  }
+
+  @if (error) {
+    <div class="alert alert-error">{{ error }}</div>
+  }
+
+  <div class="form-grid">
+
+    <!-- Left: image drop zone -->
+    <div class="image-section">
+      <div
+        class="drop-zone"
+        [class.has-image]="previewUrl"
+        (drop)="onDrop($event)"
+        (dragover)="onDragOver($event)"
+        (click)="fileInput.click()"
+      >
+        @if (previewUrl) {
+          <img [src]="previewUrl" class="preview-img" alt="Preview" />
+        } @else {
+          <div class="drop-placeholder">
+            <div class="drop-icon">📷</div>
+            <p>Click or drag an image here</p>
+            <span>JPEG or PNG, max 20 MB</span>
+          </div>
+        }
+      </div>
+      <input
+        #fileInput
+        type="file"
+        accept="image/jpeg,image/png"
+        style="display:none"
+        (change)="onFileSelected($event)"
+      />
+      @if (selectedFile) {
+        <div class="file-name">{{ selectedFile.name }}</div>
+      }
+    </div>
+
+    <!-- Right: metadata fields -->
+    <div class="fields-section">
+
+      <div class="field">
+        <label>Defect name <span class="required">*</span></label>
+        <input
+          type="text"
+          [(ngModel)]="defect"
+          placeholder="e.g. Fissures de type I"
+        />
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Fiche / Reference</label>
+          <input type="text" [(ngModel)]="fiche" placeholder="e.g. 2.1" />
+        </div>
+        <div class="field">
+          <label>Severity class</label>
+          <select [(ngModel)]="severity">
+            <option value="">— not set —</option>
+            <option value="1">Class 1 — Minor</option>
+            <option value="2">Class 2 — Moderate</option>
+            <option value="3">Class 3 — Severe</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Source / PDF name</label>
+        <input type="text" [(ngModel)]="sourcePdf" placeholder="e.g. rapport_visite_2026.pdf" />
+      </div>
+
+      <div class="field">
+        <label>Commentary</label>
+        <textarea
+          [(ngModel)]="commentary"
+          rows="6"
+          placeholder="Describe the defect, probable causes, severity and recommended actions…"
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-reset" (click)="reset()" [disabled]="submitting">
+          Reset
+        </button>
+        <button
+          class="btn-submit"
+          (click)="submit()"
+          [disabled]="!isValid() || submitting"
+        >
+          @if (submitting) { Uploading… } @else { Upload pair }
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

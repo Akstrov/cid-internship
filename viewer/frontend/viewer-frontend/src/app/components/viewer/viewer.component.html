@@ -1,0 +1,144 @@
+<div class="app-shell">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <span class="topbar-title">ITSEOA Dataset Viewer</span>
+    <nav class="tab-bar">
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'browse'"
+        (click)="activeTab = 'browse'"
+      >Browse</button>
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'upload'"
+        (click)="activeTab = 'upload'"
+      >+ Upload</button>
+    </nav>
+    @if (status) {
+      <span class="topbar-meta">
+        {{ status.total }} pairs &nbsp;·&nbsp;
+        <span class="source-badge">{{ status.source }}</span>
+      </span>
+    }
+  </header>
+
+  <!-- ── Browse tab ──────────────────────────────────────────────────────── -->
+  @if (activeTab === 'browse') {
+    <div class="main-layout">
+
+      <aside class="sidebar">
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search defect or fiche…"
+            (input)="onSearchInput($any($event.target).value)"
+          />
+        </div>
+        <div class="list-meta">{{ totalPairs }} result{{ totalPairs !== 1 ? 's' : '' }}</div>
+
+        <ul class="pair-list">
+          @for (p of pairs; track p._id) {
+            <li
+              class="pair-item"
+              [class.selected]="p._id === selectedId"
+              (click)="selectPair(p._id)"
+            >
+              <div class="pair-fiche">
+                @if (p.layout === 'manual') {
+                  <span class="manual-badge">manual</span>
+                } @else {
+                  Fiche {{ p.fiche }}
+                }
+              </div>
+              <div class="pair-defect">{{ p.defect }}</div>
+              <div class="pair-meta">p.{{ p.page }} &nbsp;·&nbsp; {{ p.layout }}</div>
+            </li>
+          }
+        </ul>
+
+        @if (totalPages > 1) {
+          <div class="pagination">
+            <button (click)="prevPage()" [disabled]="currentPage === 1">‹</button>
+            <span>{{ currentPage }} / {{ totalPages }}</span>
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages">›</button>
+          </div>
+        }
+      </aside>
+
+      <main class="detail-panel">
+        @if (!selectedId) {
+          <div class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <p>Select a pair from the list to inspect it</p>
+          </div>
+        }
+        @if (selectedId && loading) {
+          <div class="loading">Loading…</div>
+        }
+        @if (detail && !loading) {
+          <div class="pair-detail">
+            <div class="detail-header">
+              <h2>
+                @if (detail.layout === 'manual') { Manual upload }
+                @else { Fiche {{ detail.fiche }} }
+              </h2>
+              <span class="layout-badge">{{ detail.layout }}</span>
+              <span class="page-badge">p.{{ detail.page }}</span>
+            </div>
+            <p class="detail-defect">{{ detail.defect }}</p>
+            <p class="detail-source">{{ detail.source_pdf }}</p>
+
+            @if (imageUrl) {
+              <div class="image-container">
+                <img [src]="imageUrl" alt="{{ detail.defect }}" class="defect-image" />
+              </div>
+            }
+
+            <div class="commentary">
+              @if (detail.commentary.intro || detail.commentary.causes) {
+                @if (detail.commentary.intro) {
+                  <div class="section">
+                    <div class="section-label">Description</div>
+                    <p>{{ detail.commentary.intro }}</p>
+                  </div>
+                }
+                @if (detail.commentary.causes) {
+                  <div class="section">
+                    <div class="section-label">Causes probables</div>
+                    <p>{{ detail.commentary.causes }}</p>
+                  </div>
+                }
+                @if (detail.commentary.gravite) {
+                  <div class="section">
+                    <div class="section-label">Gravité</div>
+                    <p>{{ detail.commentary.gravite }}</p>
+                  </div>
+                }
+                @if (detail.commentary.suites) {
+                  <div class="section">
+                    <div class="section-label">Suites à donner</div>
+                    <p>{{ detail.commentary.suites }}</p>
+                  </div>
+                }
+              } @else if (detail.commentary.full) {
+                <div class="section">
+                  <div class="section-label">Commentaire</div>
+                  <p>{{ detail.commentary.full }}</p>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </main>
+    </div>
+  }
+
+  <!-- ── Upload tab ──────────────────────────────────────────────────────── -->
+  @if (activeTab === 'upload') {
+    <div class="upload-container">
+      <app-upload (uploadSuccess)="onUploadSuccess($event)" />
+    </div>
+  }
+
+</div>
