@@ -1,8 +1,7 @@
 {
-  "version": 5,
-  "mappings": {
-    "0||DRE": {
-      "screen": "Franchissement",
+  "Franchissement": [
+    {
+      "path": [],
       "field": "DRE",
       "type": "Liste de choix",
       "cols": [
@@ -11,11 +10,10 @@
           "col": "CODE_REGION"
         }
       ],
-      "note": "CODE_REGION est dénormalisé dans FRANADMIN sans FK déclarée vers REGION. Le chemin normalisé est FRANADMIN.CODE_PROV → PROVINCE.CODE_PROV → PROVINCE.CODE_REG → REGION.CODE_REG. La valeur insérée doit être cohérente avec CODE_PROV.",
-      "path": []
+      "note": "CODE_REGION est dénormalisé dans FRANADMIN sans FK déclarée vers REGION. Le chemin normalisé est FRANADMIN.CODE_PROV → PROVINCE.CODE_PROV → PROVINCE.CODE_REG → REGION.CODE_REG. La valeur insérée doit être cohérente avec CODE_PROV."
     },
-    "0||DPE": {
-      "screen": "Franchissement",
+    {
+      "path": [],
       "field": "DPE",
       "type": "Liste de choix",
       "cols": [
@@ -24,11 +22,10 @@
           "col": "CODE_PROV"
         }
       ],
-      "note": "FK déclarée : FRANADMIN.CODE_PROV → PROVINCE.CODE_PROV. Le libellé de la province est dans PROVINCE.LIB_PROV.",
-      "path": []
+      "note": "FK déclarée : FRANADMIN.CODE_PROV → PROVINCE.CODE_PROV. Le libellé de la province est dans PROVINCE.LIB_PROV."
     },
-    "0||Fiche établie le:": {
-      "screen": "Franchissement",
+    {
+      "path": [],
       "field": "Fiche établie le:",
       "type": "Texte",
       "cols": [
@@ -37,11 +34,10 @@
           "col": "DATESAISIE"
         }
       ],
-      "note": "Date de création de la fiche. Type DATE, pas de FK.",
-      "path": []
+      "note": "Date de création de la fiche. Type DATE, pas de FK."
     },
-    "0||Date dernière MAJ": {
-      "screen": "Franchissement",
+    {
+      "path": [],
       "field": "Date dernière MAJ",
       "type": "Texte",
       "cols": [
@@ -50,144 +46,10 @@
           "col": "DATEMAJ"
         }
       ],
-      "note": "Date de dernière mise à jour générale. DATEMAJ_FRAN existe aussi pour les mises à jour spécifiques au franchissement. Lors de la migration, renseigner les deux colonnes.",
-      "path": []
+      "note": "Date de dernière mise à jour générale. DATEMAJ_FRAN existe aussi pour les mises à jour spécifiques au franchissement. Lors de la migration, renseigner les deux colonnes."
     },
-    "0||Numéro d'incrémentation": {
-      "screen": "Franchissement",
-      "field": "Numéro d'incrémentation",
-      "type": "Valeur incrémentée automatiquement",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "IDENTIFIANT"
-        }
-      ],
-      "note": "Clé primaire VARCHAR2(8), générée automatiquement. Référencée comme FK dans OARG, VISITE, T_FRAN_VFT, HIST_FRAN, PHOTOS_OUV.",
-      "path": []
-    },
-    "0||Voie portée||Type": {
-      "screen": "Franchissement",
-      "field": "Type",
-      "type": "Liste de choix",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "CODE_VPT"
-        }
-      ],
-      "note": "FK déclarée : FRANADMIN.CODE_VPT → VOIES_PORTEE_TYPE.CODE_VPT. Libellé dans VOIES_PORTEE_TYPE.LIB_VP_TYPE.",
-      "path": [
-        "Voie portée"
-      ]
-    },
-    "0||Voie portée||Numéro": {
-      "screen": "Franchissement",
-      "field": "Numéro",
-      "type": "Texte",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "VP_NUM"
-        }
-      ],
-      "note": "Numéro de la route portante. NUMBER(5), pas de FK.",
-      "path": [
-        "Voie portée"
-      ]
-    },
-    "0||Voie portée||Pk": {
-      "screen": "Franchissement",
-      "field": "Pk",
-      "type": "Texte",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "VP_PK"
-        }
-      ],
-      "note": "Point kilométrique. NUMBER(8,3), pas de FK.",
-      "path": [
-        "Voie portée"
-      ]
-    },
-    "0||Voie portée||Implantation": {
-      "screen": "Franchissement",
-      "field": "Implantation",
-      "type": "Liste de choix",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "CODE_IMP_VP"
-        }
-      ],
-      "note": "FK déclarée : FRANADMIN.CODE_IMP_VP → IMPLANTATION_TRACE.CODE_IMP_VP. Concerne le tracé de la voie portante (en alignement, en courbe, etc.).",
-      "path": [
-        "Voie portée"
-      ]
-    },
-    "0||Voie portée||Longueur totale franchissement": {
-      "screen": "Franchissement",
-      "field": "Longueur totale franchissement",
-      "type": "Texte",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "LONGUEUR"
-        }
-      ],
-      "note": "Longueur totale du franchissement en mètres. NUMBER(7,2), pas de FK.",
-      "path": [
-        "Voie portée"
-      ]
-    },
-    "0||Voie portée||Revêtement": {
-      "screen": "Franchissement",
-      "field": "Revêtement",
-      "type": "Liste de choix",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "CODE_REVET_CH"
-        }
-      ],
-      "note": "FK déclarée : FRANADMIN.CODE_REVET_CH → REVET_CHAUSSEE.CODE_REVET_CH. Libellé dans REVET_CHAUSSEE.LIB_REVET_CH.",
-      "path": [
-        "Voie portée"
-      ]
-    },
-    "0||Voie portée||Possibilité de déviation": {
-      "screen": "Franchissement",
-      "field": "Possibilité de déviation",
-      "type": "Bouton de choix (booléen)",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "DEVIATION"
-        }
-      ],
-      "note": "Booléen VARCHAR2(3), valeurs O/N ou OUI/NON. Pas de FK.",
-      "path": [
-        "Voie portée"
-      ]
-    },
-    "0||Voie portée||Classe trafic": {
-      "screen": "Franchissement",
-      "field": "Classe trafic",
-      "type": "Liste de choix",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "CODE_CL_TRAFIC"
-        }
-      ],
-      "note": "FK déclarée : FRANADMIN.CODE_CL_TRAFIC → CLASSE_TRAFIC.CODE_CL_TRAFIC. Libellé dans CLASSE_TRAFIC.LIB_CL_TRAFIC.",
-      "path": [
-        "Voie portée"
-      ]
-    },
-    "0||Historique": {
-      "screen": "Franchissement",
+    {
+      "path": [],
       "field": "Historique",
       "type": "Bouton",
       "cols": [
@@ -196,11 +58,136 @@
           "col": "IDENTIFIANT"
         }
       ],
-      "note": "Données historiques du franchissement. Écrites automatiquement par l'application à chaque modification dans HIST_FRAN. Pour la migration, les données historiques existantes doivent être insérées dans HIST_FRAN avec HIST_FRAN.IDENTIFIANT → FRANADMIN.IDENTIFIANT et HIST_FRAN.CODE_PROV → PROVINCE.CODE_PROV.",
-      "path": []
+      "note": "Données historiques du franchissement. Écrites automatiquement par l'application à chaque modification dans HIST_FRAN. Pour la migration, les données historiques existantes doivent être insérées dans HIST_FRAN avec HIST_FRAN.IDENTIFIANT → FRANADMIN.IDENTIFIANT et HIST_FRAN.CODE_PROV → PROVINCE.CODE_PROV."
     },
-    "0||Voie portée||Pont sur:": {
-      "screen": "Franchissement",
+    {
+      "path": [],
+      "field": "Numéro d'incrémentation",
+      "type": "Valeur incrémentée automatiquement",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "IDENTIFIANT"
+        }
+      ],
+      "note": "Clé primaire VARCHAR2(8), générée automatiquement. Référencée comme FK dans OARG, VISITE, T_FRAN_VFT, HIST_FRAN, PHOTOS_OUV."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
+      "field": "Type",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_VPT"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_VPT → VOIES_PORTEE_TYPE.CODE_VPT. Libellé dans VOIES_PORTEE_TYPE.LIB_VP_TYPE."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
+      "field": "Numéro",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "VP_NUM"
+        }
+      ],
+      "note": "Numéro de la route portante. NUMBER(5), pas de FK."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
+      "field": "Pk",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "VP_PK"
+        }
+      ],
+      "note": "Point kilométrique. NUMBER(8,3), pas de FK."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
+      "field": "Implantation",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_IMP_VP"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_IMP_VP → IMPLANTATION_TRACE.CODE_IMP_VP. Concerne le tracé de la voie portante (en alignement, en courbe, etc.)."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
+      "field": "Longueur totale franchissement",
+      "type": "Texte",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "LONGUEUR"
+        }
+      ],
+      "note": "Longueur totale du franchissement en mètres. NUMBER(7,2), pas de FK."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
+      "field": "Revêtement",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_REVET_CH"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_REVET_CH → REVET_CHAUSSEE.CODE_REVET_CH. Libellé dans REVET_CHAUSSEE.LIB_REVET_CH."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
+      "field": "Possibilité de déviation",
+      "type": "Bouton de choix (booléen)",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "DEVIATION"
+        }
+      ],
+      "note": "Booléen VARCHAR2(3), valeurs O/N ou OUI/NON. Pas de FK."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
+      "field": "Classe trafic",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_CL_TRAFIC"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_CL_TRAFIC → CLASSE_TRAFIC.CODE_CL_TRAFIC. Libellé dans CLASSE_TRAFIC.LIB_CL_TRAFIC."
+    },
+    {
+      "path": [
+        "Voie portée"
+      ],
       "field": "Pont sur:",
       "type": "Liste de choix",
       "cols": [
@@ -213,13 +200,13 @@
           "col": "CODE_VFT"
         }
       ],
-      "note": "Ne va pas dans FRANADMIN. Table de jonction T_FRAN_VFT car un franchissement peut croiser plusieurs obstacles. FK déclarées : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.CODE_VFT, T_FRAN_VFT.IDENTIFIANT → FRANADMIN.IDENTIFIANT, T_FRAN_VFT.CODE_PROV → PROVINCE.CODE_PROV. CODE_VFT + IDENTIFIANT forment la clé logique unique (pas d'index unique déclaré dans le SQL). CODE_PROV est copié depuis FRANADMIN par dénormalisation.",
-      "path": [
-        "Voie portée"
-      ]
+      "note": "Ne va pas dans FRANADMIN. Table de jonction T_FRAN_VFT car un franchissement peut croiser plusieurs obstacles. FK déclarées : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.CODE_VFT, T_FRAN_VFT.IDENTIFIANT → FRANADMIN.IDENTIFIANT, T_FRAN_VFT.CODE_PROV → PROVINCE.CODE_PROV. CODE_VFT + IDENTIFIANT forment la clé logique unique (pas d'index unique déclaré dans le SQL). CODE_PROV est copié depuis FRANADMIN par dénormalisation."
     },
-    "0||Voie portée||Restriction d'exploitation||Restriction de circulation": {
-      "screen": "Franchissement",
+    {
+      "path": [
+        "Voie portée",
+        "Restriction d'exploitation"
+      ],
       "field": "Restriction de circulation",
       "type": "Bouton de choix (booléen)",
       "cols": [
@@ -228,14 +215,13 @@
           "col": "RESTRICTION"
         }
       ],
-      "note": "Booléen VARCHAR2(3), pas de FK.",
+      "note": "Booléen VARCHAR2(3), pas de FK."
+    },
+    {
       "path": [
         "Voie portée",
         "Restriction d'exploitation"
-      ]
-    },
-    "0||Voie portée||Restriction d'exploitation||PTC": {
-      "screen": "Franchissement",
+      ],
       "field": "PTC",
       "type": "Valeur importée",
       "cols": [
@@ -244,14 +230,13 @@
           "col": "PTC"
         }
       ],
-      "note": "Port total en charge en tonnes. NUMBER(2), pas de FK. Valeur importée depuis les données officielles de restriction de charge.",
+      "note": "Port total en charge en tonnes. NUMBER(2), pas de FK. Valeur importée depuis les données officielles de restriction de charge."
+    },
+    {
       "path": [
         "Voie portée",
         "Restriction d'exploitation"
-      ]
-    },
-    "0||Voie portée||Restriction d'exploitation||Vitesse Limite Signalée": {
-      "screen": "Franchissement",
+      ],
       "field": "Vitesse Limite Signalée",
       "type": "Valeur importée",
       "cols": [
@@ -260,14 +245,13 @@
           "col": "VL_VP"
         }
       ],
-      "note": "Vitesse limite en km/h. NUMBER(3), pas de FK. VL = Vitesse Limite, VP = Voie Portée.",
+      "note": "Vitesse limite en km/h. NUMBER(3), pas de FK. VL = Vitesse Limite, VP = Voie Portée."
+    },
+    {
       "path": [
         "Voie portée",
         "Restriction d'exploitation"
-      ]
-    },
-    "0||Voie portée||Restriction d'exploitation||Hauteur Limite Signalée": {
-      "screen": "Franchissement",
+      ],
       "field": "Hauteur Limite Signalée",
       "type": "Valeur importée",
       "cols": [
@@ -276,14 +260,13 @@
           "col": "HL_VP"
         }
       ],
-      "note": "Hauteur limite en mètres. NUMBER(7,2), pas de FK. HL = Hauteur Limite, VP = Voie Portée.",
+      "note": "Hauteur limite en mètres. NUMBER(7,2), pas de FK. HL = Hauteur Limite, VP = Voie Portée."
+    },
+    {
       "path": [
         "Voie portée",
         "Restriction d'exploitation"
-      ]
-    },
-    "0||Voie portée||Restriction d'exploitation||Largeur Limite Signalée": {
-      "screen": "Franchissement",
+      ],
       "field": "Largeur Limite Signalée",
       "type": "Valeur importée",
       "cols": [
@@ -292,14 +275,13 @@
           "col": "LL_VP"
         }
       ],
-      "note": "Largeur limite en mètres. NUMBER(7,2), pas de FK. LL = Largeur Limite, VP = Voie Portée.",
-      "path": [
-        "Voie portée",
-        "Restriction d'exploitation"
-      ]
+      "note": "Largeur limite en mètres. NUMBER(7,2), pas de FK. LL = Largeur Limite, VP = Voie Portée."
     },
-    "0||Voie Franchie||Type||Code": {
-      "screen": "Franchissement",
+    {
+      "path": [
+        "Voie Franchie",
+        "Type"
+      ],
       "field": "Code",
       "type": "Liste de choix",
       "cols": [
@@ -308,14 +290,13 @@
           "col": "CODE_VFT"
         }
       ],
-      "note": "Même table et même colonne que \"Pont sur\". Code et Type de Voie Franchie sont deux représentations du même champ dans T_FRAN_VFT. FK : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.CODE_VFT.",
+      "note": "Même table et même colonne que \"Pont sur\". Code et Type de Voie Franchie sont deux représentations du même champ dans T_FRAN_VFT. FK : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.CODE_VFT."
+    },
+    {
       "path": [
         "Voie Franchie",
         "Type"
-      ]
-    },
-    "0||Voie Franchie||Type||Type de Voie Franchie": {
-      "screen": "Franchissement",
+      ],
       "field": "Type de Voie Franchie",
       "type": "Liste de choix",
       "cols": [
@@ -324,14 +305,26 @@
           "col": "LIB_VFT"
         }
       ],
-      "note": "Valeur affichée en lecture seule — le dashboard résout le libellé par jointure : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.LIB_VFT. La valeur stockée est le code dans T_FRAN_VFT.CODE_VFT (mappé séparément via le champ Code). Pas d'insertion directe dans VOIES_FRANCHIES_TYPE lors de la migration.",
-      "path": [
-        "Voie Franchie",
-        "Type"
-      ]
+      "note": "Valeur affichée en lecture seule — le dashboard résout le libellé par jointure : T_FRAN_VFT.CODE_VFT → VOIES_FRANCHIES_TYPE.LIB_VFT. La valeur stockée est le code dans T_FRAN_VFT.CODE_VFT (mappé séparément via le champ Code). Pas d'insertion directe dans VOIES_FRANCHIES_TYPE lors de la migration."
     },
-    "0||Détail des Ouvrages||Nombre d'ouvrage(s)": {
-      "screen": "Franchissement",
+    {
+      "path": [
+        "Voie Franchie"
+      ],
+      "field": "Implantation",
+      "type": "Liste de choix",
+      "cols": [
+        {
+          "table": "FRANADMIN",
+          "col": "CODE_IMP_VF"
+        }
+      ],
+      "note": "FK déclarée : FRANADMIN.CODE_IMP_VF → IMPLANTATION_OBSTACLE.CODE_IMP_VF. Concerne l'implantation de l'obstacle franchi. Différent de CODE_IMP_VP (voie portée) qui utilise IMPLANTATION_TRACE — deux tables de référence distinctes."
+    },
+    {
+      "path": [
+        "Détail des Ouvrages"
+      ],
       "field": "Nombre d'ouvrage(s)",
       "type": "Valeur calculée",
       "cols": [
@@ -340,13 +333,13 @@
           "col": "NBOA"
         }
       ],
-      "note": "Valeur dénormalisée NUMBER(2). Maintenue automatiquement par l'application à chaque ajout ou suppression d'un ouvrage. Pas de FK. Peut être recalculée par COUNT sur OARG.IDENTIFIANT.",
-      "path": [
-        "Détail des Ouvrages"
-      ]
+      "note": "Valeur dénormalisée NUMBER(2). Maintenue automatiquement par l'application à chaque ajout ou suppression d'un ouvrage. Pas de FK. Peut être recalculée par COUNT sur OARG.IDENTIFIANT."
     },
-    "0||Détail des Ouvrages||Liste||N° d'ordre": {
-      "screen": "Franchissement",
+    {
+      "path": [
+        "Détail des Ouvrages",
+        "Liste"
+      ],
       "field": "N° d'ordre",
       "type": "Bouton",
       "cols": [
@@ -355,14 +348,9 @@
           "col": "NUM_ORDRE"
         }
       ],
-      "note": "Numéro d'ordre de l'ouvrage dans le franchissement, ordonné par PK croissant. NUMBER(2). FK : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT. Type Bouton dans le dashboard mais c'est un vrai champ de données.",
-      "path": [
-        "Détail des Ouvrages",
-        "Liste"
-      ]
+      "note": "Numéro d'ordre de l'ouvrage dans le franchissement, ordonné par PK croissant. NUMBER(2). FK : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT. Type Bouton dans le dashboard mais c'est un vrai champ de données."
     },
-    "0||Détail des Ouvrages||Liste||Désignation": {
-      "screen": "Franchissement",
+    {
       "path": [
         "Détail des Ouvrages",
         "Liste"
@@ -377,8 +365,11 @@
       ],
       "note": "Désignation de l'ouvrage dans la liste du franchissement. OARG.IDENTIFIANT_TXT est le candidat le plus probable (VARCHAR2(8), texte de l'identifiant). Cependant ce champ est NULL dans les données d'exemple — à confirmer avec le client. L'alternative est OARG.IDENTIFIANT lui-même."
     },
-    "0||Détail des Ouvrages||Liste||Long Biaise": {
-      "screen": "Franchissement",
+    {
+      "path": [
+        "Détail des Ouvrages",
+        "Liste"
+      ],
       "field": "Long Biaise",
       "type": "Valeur importée",
       "cols": [
@@ -387,40 +378,21 @@
           "col": "LONG_BIAISE"
         }
       ],
-      "note": "Longueur biaisée de l'ouvrage individuel en mètres. NUMBER(7,2). Valeur importée depuis OARG via FK : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT. Affiché en lecture seule dans l'écran Franchissement.",
+      "note": "Longueur biaisée de l'ouvrage individuel en mètres. NUMBER(7,2). Valeur importée depuis OARG via FK : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT. Affiché en lecture seule dans l'écran Franchissement."
+    },
+    {
       "path": [
         "Détail des Ouvrages",
         "Liste"
-      ]
-    },
-    "0||Détail des Ouvrages||Liste||Ajouter un ouvrage": {
-      "screen": "Franchissement",
+      ],
       "field": "Ajouter un ouvrage",
       "type": "Bouton",
       "cols": [],
-      "note": "Bouton de navigation uniquement. Ouvre l'écran Détails Ouvrage pour créer un nouvel enregistrement OARG. La saisie des données se fait dans cet écran, pas dans Franchissement.",
-      "path": [
-        "Détail des Ouvrages",
-        "Liste"
-      ]
-    },
-    "0||Voie Franchie||Implantation": {
-      "screen": "Franchissement",
-      "path": [
-        "Voie Franchie"
-      ],
-      "field": "Implantation",
-      "type": "Liste de choix",
-      "cols": [
-        {
-          "table": "FRANADMIN",
-          "col": "CODE_IMP_VF"
-        }
-      ],
-      "note": "FK déclarée : FRANADMIN.CODE_IMP_VF → IMPLANTATION_OBSTACLE.CODE_IMP_VF. Concerne l'implantation de l'obstacle franchi. Différent de CODE_IMP_VP (voie portée) qui utilise IMPLANTATION_TRACE — deux tables de référence distinctes."
-    },
-    "1||Photo de Franchissement": {
-      "screen": "Détails Ouvrage",
+      "note": "Bouton de navigation uniquement. Ouvre l'écran Détails Ouvrage pour créer un nouvel enregistrement OARG. La saisie des données se fait dans cet écran, pas dans Franchissement."
+    }
+  ],
+  "Détails Ouvrage": [
+    {
       "path": [],
       "field": "Photo de Franchissement",
       "type": "Bouton",
@@ -432,8 +404,7 @@
       ],
       "note": "Photos du franchissement parent. FK déclarée : PHOTOS_OUV.IDENTIFIANT → FRANADMIN.IDENTIFIANT. Autres colonnes : CODE_PROV, PHOTOS (BLOB), DATESAISIE. Pour la migration, les photos existantes du franchissement doivent être insérées dans PHOTOS_OUV."
     },
-    "1||Historique": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Historique",
       "type": "Bouton",
@@ -445,8 +416,7 @@
       ],
       "note": "Historique de l'ouvrage. Colonnes : IDENTIFIANT, NUMOA, DATEMAJ, LONG_BIAISE, CODE_FAMILLE_HIST, NBRE_TRAVEE, LARGEUR, CODE_SF. Écrit automatiquement par l'application. Pour la migration : clé composite HIST_OUV.(IDENTIFIANT, NUMOA) identifie l'ouvrage historisé."
     },
-    "1||Aide": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Aide",
       "type": "Bouton",
@@ -458,24 +428,21 @@
       ],
       "note": "Historique de l'ouvrage. Colonnes : IDENTIFIANT, NUMOA, DATEMAJ, LONG_BIAISE, CODE_FAMILLE_HIST, NBRE_TRAVEE, LARGEUR, CODE_SF. Écrit automatiquement par l'application. Pour la migration : clé composite HIST_OUV.(IDENTIFIANT, NUMOA) identifie l'ouvrage historisé."
     },
-    "1||Allez au niveau visite": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Allez au niveau visite",
       "type": "Bouton",
       "cols": [],
       "note": "Bouton de navigation pure — change d'écran uniquement. Aucune donnée affichée ou stockée."
     },
-    "1||Retour au niveau Franchissement": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Retour au niveau Franchissement",
       "type": "Bouton",
       "cols": [],
       "note": "Bouton de navigation pure — retour à l'écran Franchissement. Aucune donnée affichée ou stockée."
     },
-    "1||Photos visite": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Photos visite",
       "type": "Bouton",
@@ -487,8 +454,7 @@
       ],
       "note": "Photos de visite de l'ouvrage. FK composite déclarée : T_ALBUM_PHOTOS.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). Autres colonnes : NUM_ORDRE (séquence photo), IMAGE (BLOB), COMMENTAIRE, DATE_PHOTOS. Pour la migration, les photos de visite doivent être insérées dans T_ALBUM_PHOTOS."
     },
-    "1||Numéro d'ouvrage": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Numéro d'ouvrage",
       "type": "Valeur importée",
@@ -500,8 +466,7 @@
       ],
       "note": "NUMOA = Numéro d'Ouvrage d'Art. NUMBER(2), séquence de l'ouvrage dans le franchissement parent. Valeur importée — attribuée automatiquement. Avec OARG.IDENTIFIANT, forme la clé composite unique de l'ouvrage. FK : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT."
     },
-    "1||Type de route": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Type de route",
       "type": "Valeur importée",
@@ -513,8 +478,7 @@
       ],
       "note": "Valeur importée depuis le franchissement parent — affiché en lecture seule. La valeur stockée est le code FRANADMIN.CODE_VPT. Le dashboard affiche le libellé via jointure : FRANADMIN.CODE_VPT → VOIES_PORTEE_TYPE.LIB_VP_TYPE. Chemin : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT → FRANADMIN.CODE_VPT. Pas d'insertion dans OARG."
     },
-    "1||Numéro de route": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Numéro de route",
       "type": "Valeur importée",
@@ -526,8 +490,7 @@
       ],
       "note": "Valeur importée depuis le franchissement parent — affiché en lecture seule. La valeur stockée est le numéro NUMBER(5) dans FRANADMIN.VP_NUM. Chemin : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT → FRANADMIN.VP_NUM. Pas d'insertion dans OARG."
     },
-    "1||Pk": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Pk",
       "type": "Valeur importée",
@@ -539,8 +502,7 @@
       ],
       "note": "Valeur importée depuis le franchissement parent — affiché en lecture seule. La valeur stockée est NUMBER(8,3) dans FRANADMIN.VP_PK. Chemin : OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT → FRANADMIN.VP_PK. Pas d'insertion dans OARG."
     },
-    "1||Région": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Région",
       "type": "Valeur importée",
@@ -552,8 +514,7 @@
       ],
       "note": "Valeur affichée en lecture seule. La valeur stockée est REGION.CODE_REG — le code de la région VARCHAR2(4). Le dashboard affiche le libellé REGION.LIB_REG. Chemin de dérivation depuis l'ouvrage : OARG.CODE_PROV → PROVINCE.CODE_PROV → PROVINCE.CODE_REG → REGION.CODE_REG. Pas d'insertion directe — la région est dérivée de la province."
     },
-    "1||Numéro d'ordre (Pk croissant)": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Numéro d'ordre (Pk croissant)",
       "type": "Valeur importée",
@@ -565,8 +526,7 @@
       ],
       "note": "Numéro d'ordre de l'ouvrage dans le franchissement, trié par PK croissant. NUMBER(2), pas de FK. Lié au franchissement via OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT. Valeur importée — calculée automatiquement par l'application."
     },
-    "1||Famille": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Famille",
       "type": "Liste de choix",
@@ -578,8 +538,7 @@
       ],
       "note": "FK déclarée : OARG.CODE_FAMILLE → FAMILLE_OA.CODE_FAMILLE. Le dashboard affiche le libellé via FAMILLE_OA.LIB_FAMILLE. CODE_FAMILLE conditionne en cascade les listes filtrées de : sous-famille, coupe-travers, matériaux tablier, dispositifs, réseaux portés. Doit être inséré en premier parmi les codes OARG."
     },
-    "1||Province": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [],
       "field": "Province",
       "type": "Valeur importée",
@@ -591,8 +550,7 @@
       ],
       "note": "FK déclarée : OARG.CODE_PROV → PROVINCE.CODE_PROV. Le dashboard affiche le libellé via PROVINCE.LIB_PROV. Valeur importée depuis le franchissement mais dénormalisée dans OARG. CODE_PROV est aussi requis dans toutes les tables détail : T_CULEE, PILE, T_TRAVEES, T_ASSAINISSEMENT, etc."
     },
-    "1||Données générales||Sous Famille": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données générales"
       ],
@@ -606,8 +564,7 @@
       ],
       "note": "FK composite déclarée : OARG.(CODE_SF, CODE_FAMILLE) → SOUS_FAMILLE_OA.(CODE_SF, CODE_FAMILLE). Le dashboard affiche SOUS_FAMILLE_OA.LIB_SF. La liste est filtrée par CODE_FAMILLE — doit être renseigné après Famille."
     },
-    "1||Données générales||Type d'ouvrage (autres précisions)": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données générales"
       ],
@@ -621,8 +578,7 @@
       ],
       "note": "Texte libre VARCHAR2(70), pas de FK. Complément de description au-delà de la famille et sous-famille. Valeur saisie directement par l'inspecteur."
     },
-    "1||Données générales||Année d'achèvement des travaux": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données générales"
       ],
@@ -636,8 +592,7 @@
       ],
       "note": "Type DATE, pas de FK. L'application extrait et affiche l'année uniquement. La valeur complète est stockée en DATE Oracle. Pour la migration, formater en date complète (01/01/YYYY si seule l'année est connue)."
     },
-    "1||Données générales||Ouvrage est-il une transformation d'ouvrage ancien (O/N)": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données générales"
       ],
@@ -651,8 +606,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Pas de FK. Indique si l'ouvrage est une transformation d'un ancien ouvrage existant plutôt qu'une construction neuve."
     },
-    "1||Données générales||Ouvrage Submersible (O/N)": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données générales"
       ],
@@ -666,8 +620,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Pas de FK. Indique si l'ouvrage est conçu pour être submersible (passage à gué surélevé, radier submersible, etc.)."
     },
-    "1||Données générales||Existence Dossier d'ouvrage (O/N)": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données générales"
       ],
@@ -681,8 +634,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Pas de FK. Indique si un dossier technique d'ouvrage existe pour cette structure."
     },
-    "1||Données générales||Forme de l'ouvrage": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données générales"
       ],
@@ -696,8 +648,7 @@
       ],
       "note": "FK déclarée : OARG.CODE_FORME → FORME_OA.CODE_FORME. Le dashboard affiche le libellé via FORME_OA.LIB_FORME. La valeur stockée est le code VARCHAR2(4)."
     },
-    "1||Données géométriques||Longueur biaise de l'ouvrage": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques"
       ],
@@ -711,8 +662,7 @@
       ],
       "note": "NUMBER(7,2), pas de FK. Longueur mesurée selon l'axe biais de l'ouvrage en mètres. Différent de FRANADMIN.LONGUEUR qui est la longueur totale du franchissement."
     },
-    "1||Données géométriques||Biais (grades)": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques"
       ],
@@ -726,8 +676,7 @@
       ],
       "note": "NUMBER(5,2), pas de FK. Angle de biais en grades (pas en degrés). 100 grades = angle droit. Un ouvrage perpendiculaire a BIAIS = 100."
     },
-    "1||Données géométriques||Nombre de travées": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques"
       ],
@@ -741,8 +690,7 @@
       ],
       "note": "NUMBER(2), pas de FK. Doit correspondre au nombre de lignes dans T_TRAVEES pour cet ouvrage (IDENTIFIANT, NUMOA). Vérifier la cohérence lors de la migration."
     },
-    "1||Données géométriques||Hauteur Max Sous Tablier": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques"
       ],
@@ -756,8 +704,7 @@
       ],
       "note": "NUMBER(7,2), pas de FK. Hauteur maximale libre sous le tablier en mètres. Détermine le gabarit de navigation pour les ouvrages sur cours d'eau."
     },
-    "1||Données géométriques||Portées/Flèche/Ouverture des travées||Num travée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Portées/Flèche/Ouverture des travées"
@@ -772,8 +719,7 @@
       ],
       "note": "FK composite déclarée : T_TRAVEES.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). NUM_TRAVEE est le numéro séquentiel de la travée NUMBER(2). Aussi : T_TRAVEES.CODE_PROV → PROVINCE.CODE_PROV (dénormalisé)."
     },
-    "1||Données géométriques||Portées/Flèche/Ouverture des travées||Portée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Portées/Flèche/Ouverture des travées"
@@ -788,8 +734,7 @@
       ],
       "note": "NUMBER(7,2), pas de FK. Portée de la travée en mètres — distance horizontale entre appuis consécutifs."
     },
-    "1||Données géométriques||Portées/Flèche/Ouverture des travées||Flèche": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Portées/Flèche/Ouverture des travées"
@@ -804,8 +749,7 @@
       ],
       "note": "NUMBER(7,2), pas de FK. Flèche de la travée en mètres — déflexion ou cambrure. Pertinent principalement pour les arches."
     },
-    "1||Données géométriques||Portées/Flèche/Ouverture des travées||Ouverture": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Portées/Flèche/Ouverture des travées"
@@ -820,8 +764,7 @@
       ],
       "note": "NUMBER(7,2), pas de FK. Ouverture hydraulique en mètres — largeur libre au niveau des eaux. Critique pour les ouvrages sur cours d'eau (capacité hydraulique)."
     },
-    "1||Données géométriques||Profil en travers||Trottoir/accotement de gauche": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Profil en travers"
@@ -836,8 +779,7 @@
       ],
       "note": "NUMBER(5,2), pas de FK. Largeur du trottoir ou accotement gauche en mètres. TG = Trottoir Gauche. Les 5 colonnes de profil (LARGTG, LARGPCG, LARG_CH, LARGPCD, LARGTD) décrivent la coupe transversale du tablier de gauche à droite."
     },
-    "1||Données géométriques||Profil en travers||Piste cyclable gauche": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Profil en travers"
@@ -852,8 +794,7 @@
       ],
       "note": "NUMBER(5,2), pas de FK. Largeur de la piste cyclable gauche en mètres. PCG = Piste Cyclable Gauche."
     },
-    "1||Données géométriques||Profil en travers||Chaussée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Profil en travers"
@@ -868,8 +809,7 @@
       ],
       "note": "NUMBER(5,2), pas de FK. Largeur de la chaussée en mètres — surface circulable pour les véhicules. Largeur utile principale du tablier."
     },
-    "1||Données géométriques||Profil en travers||Pyste cyclable droite": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Profil en travers"
@@ -884,8 +824,7 @@
       ],
       "note": "NUMBER(5,2), pas de FK. Largeur de la piste cyclable droite en mètres. PCD = Piste Cyclable Droite."
     },
-    "1||Données géométriques||Profil en travers||Trottoir/accotement de droite": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Données géométriques",
         "Profil en travers"
@@ -900,8 +839,7 @@
       ],
       "note": "NUMBER(5,2), pas de FK. Largeur du trottoir ou accotement droit en mètres. TD = Trottoir Droit. Somme des 5 largeurs = largeur totale utile du tablier."
     },
-    "1||Structure de tablier||Franchissement structurel": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Structure de tablier"
       ],
@@ -915,8 +853,7 @@
       ],
       "note": "FK déclarée : OARG.CODE_FONCT_OA → FONCTION_OA.CODE_FONCT_OA. Le dashboard affiche FONCTION_OA.LIB_FONCT_OA. La valeur stockée est le code VARCHAR2(4). Exemples : pont, viaduc, passage supérieur, passage inférieur, dalot, buse."
     },
-    "1||Structure de tablier||Coupe en travers": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Structure de tablier"
       ],
@@ -930,8 +867,7 @@
       ],
       "note": "FK composite sur 3 colonnes : OARG.(CODE_COUPE_TR, CODE_FAMILLE, CODE_SF) → COUPE_TRAVERS.(CODE_COUPE_TR, CODE_FAMILLE, CODE_SF). Le dashboard affiche le libellé via COUPE_TRAVERS.CODE_COUPE_TR → TYPE_COUPE_TRAVERS.LIB_COUPE_TRAVERS. Liste filtrée par famille et sous-famille. Les 3 colonnes doivent être cohérentes lors de la migration."
     },
-    "1||Structure de tablier||Matériaux de tablier": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Structure de tablier"
       ],
@@ -945,8 +881,7 @@
       ],
       "note": " composite sur 3 colonnes : OARG.(CODE_MATERIAUX, CODE_FAMILLE, CODE_SF) → MATERIAUX_TABLIER.(CODE_MATERIAUX, CODE_FAMILLE, CODE_SF). Le dashboard affiche le libellé via MATERIAUX_TABLIER.CODE_MATERIAUX → TYPE_MATERIAUX_TABLIER.LIB_MATERIAUX. Même pattern que Coupe en travers."
     },
-    "1||Appuis||Culées||Numéro culée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Culées"
@@ -961,8 +896,7 @@
       ],
       "note": "FK composite : T_CULEE.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). NUM_CULEE = numéro séquentiel de la culée NUMBER(2) — généralement 1 et 2 pour les deux extrémités. Aussi : T_CULEE.CODE_PROV → PROVINCE.CODE_PROV (dénormalisé)."
     },
-    "1||Appuis||Culées||Type culée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Culées"
@@ -977,8 +911,7 @@
       ],
       "note": "FK déclarée : T_CULEE.CODE_TYPE_CULEE → CULEE_TYPE.CODE_TYPE_CULEE. Le dashboard affiche CULEE_TYPE.LIB_TYPE_CULEE. La valeur stockée est le code VARCHAR2(4)."
     },
-    "1||Appuis||Culées||Matériaux culée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Culées"
@@ -993,8 +926,7 @@
       ],
       "note": "FK déclarée : T_CULEE.CODE_MATERIAUX_PC → PC_MATERIAUX.CODE_MATERIAUX_PC. Le dashboard affiche PC_MATERIAUX.LIB_MATERIAUX_PC. PC = Piles et Culées — même table partagée avec les piles."
     },
-    "1||Appuis||Culées||Murs type": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Culées"
@@ -1009,8 +941,7 @@
       ],
       "note": "FK déclarée : T_CULEE.CODE_MUR_TYPE → CULEE_MUR_TYPE.CODE_MUR_TYPE. Le dashboard affiche CULEE_MUR_TYPE.LIB_MUR_TYPE. Concerne les murs en aile ou en retour de la culée."
     },
-    "1||Appuis||Culées||Murs matériaux": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Culées"
@@ -1025,8 +956,7 @@
       ],
       "note": "FK déclarée : T_CULEE.CODE_MUR_MATERIAUX → CULEE_MUR_MATERIAUX.CODE_MUR_MATERIAUX. Le dashboard affiche CULEE_MUR_MATERIAUX.LIB_MUR_MATERIAUX. Peut différer du matériau de la culée elle-même."
     },
-    "1||Appuis||Culées||Fondations culée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Culées"
@@ -1041,8 +971,7 @@
       ],
       "note": "FK déclarée : T_CULEE.CODE_FONDATION_PC → FONDATION_TYPE.CODE_FONDATION_PC. Le dashboard affiche FONDATION_TYPE.LIB_FONDATION_PC. PC = Piles et Culées — même table partagée avec les piles."
     },
-    "1||Appuis||Culées||Protection culée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Culées"
@@ -1057,8 +986,7 @@
       ],
       "note": "FK déclarée : T_CULEE.CODE_PROTECTION_PC → PC_PROTECTION_TYPE.CODE_PROTECTION_PC. Le dashboard affiche PC_PROTECTION_TYPE.LIB_PROTECTION_PC. Protection anti-affouillement autour des fondations. PC = Piles et Culées."
     },
-    "1||Appuis||Piles||Numéro pile": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Piles"
@@ -1073,8 +1001,7 @@
       ],
       "note": "FK composite : PILE.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). NUM_PILE = numéro séquentiel de la pile NUMBER(2). Une pile par travée intermédiaire. Aussi : PILE.CODE_PROV → PROVINCE.CODE_PROV (dénormalisé)."
     },
-    "1||Appuis||Piles||Type pile": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Piles"
@@ -1089,8 +1016,7 @@
       ],
       "note": "FK déclarée : PILE.CODE_TYPE_PILE → TYPE_PILE.CODE_TYPE_PILE. Le dashboard affiche TYPE_PILE.LIB_TYPE_PILE. La valeur stockée est le code VARCHAR2(4)."
     },
-    "1||Appuis||Piles||Matériaux pile": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Piles"
@@ -1105,8 +1031,7 @@
       ],
       "note": "FK déclarée : PILE.CODE_MATERIAUX_PC → PC_MATERIAUX.CODE_MATERIAUX_PC. Le dashboard affiche PC_MATERIAUX.LIB_MATERIAUX_PC. Même table de référence que matériaux culée — PC = Piles et Culées."
     },
-    "1||Appuis||Piles||Fondations pile": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Piles"
@@ -1121,8 +1046,7 @@
       ],
       "note": "FK déclarée : PILE.CODE_FONDATION_PC → FONDATION_TYPE.CODE_FONDATION_PC. Même table que fondations culée — PC = Piles et Culées."
     },
-    "1||Appuis||Piles||Protection pile": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Appuis",
         "Piles"
@@ -1137,8 +1061,7 @@
       ],
       "note": "FK déclarée : PILE.CODE_PROTECTION_PC → PC_PROTECTION_TYPE.CODE_PROTECTION_PC. Même table que protection culée. Protection anti-affouillement autour des fondations de pile en rivière."
     },
-    "1||Equipements||Chape d'étanchéité": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Equipements"
       ],
@@ -1152,8 +1075,7 @@
       ],
       "note": "FK déclarée : OARG.CODE_CHAPE_ETANCH → CHAPE_ETANCH_TYPE.CODE_CHAPE_ETANCH. Le dashboard affiche CHAPE_ETANCH_TYPE.LIB_CHAPE_ETANCH. Stocké directement dans OARG car unique par ouvrage."
     },
-    "1||Equipements||Joint de chaussée": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Equipements"
       ],
@@ -1167,8 +1089,7 @@
       ],
       "note": "FK composite : T_JOINT_CHAUSSEE.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). FK sur le code : T_JOINT_CHAUSSEE.CODE_TYPE_JOINT_CT → JOINT_CHAUSEE_TROTTOIR_TYPE.CODE_TYPE_JOINT_CT. Le dashboard affiche LIB_TYPE_JOINT_CT. Plusieurs joints possibles par ouvrage — séquence via SEQ_JOINT_CH."
     },
-    "1||Equipements||Appareil d'appui": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Equipements"
       ],
@@ -1182,8 +1103,7 @@
       ],
       "note": "FK composite : T_APPAREILS_APPUIS.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). FK sur le code : T_APPAREILS_APPUIS.CODE_TYPE_APP → APPAREIL_APPUIS_TYPE.CODE_TYPE_APP. Le dashboard affiche LIB_TYPE_APP. Plusieurs appareils possibles — séquence via SEQ_APPAREIL_APPUIS. Note : APPAREIL_APPUIS_TYPE a aussi une FK sur CODE_FAMILLE."
     },
-    "1||Equipements||Trottoirs et joints de trottoir||Type trottoir": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Equipements",
         "Trottoirs et joints de trottoir"
@@ -1198,8 +1118,7 @@
       ],
       "note": "FK composite : T_TROTTOIR.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). FK sur le code : T_TROTTOIR.CODE_TYPE_TROTTOIR → TYPE_TROTTOIR.CODE_TYPE_TROTTOIR. Le dashboard affiche TYPE_TROTTOIR.LIB_TYPE_TROTTOIR. Plusieurs trottoirs possibles — séquence via SEQ_TROTTOIR."
     },
-    "1||Equipements||Trottoirs et joints de trottoir||Type joint": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Equipements",
         "Trottoirs et joints de trottoir"
@@ -1214,8 +1133,7 @@
       ],
       "note": "Même table T_TROTTOIR que Type trottoir — même ligne. FK : T_TROTTOIR.CODE_TYPE_JOINT_CT → JOINT_CHAUSEE_TROTTOIR_TYPE.CODE_TYPE_JOINT_CT. Le dashboard affiche LIB_TYPE_JOINT_CT. Joint du trottoir stocké dans la même ligne que le type de trottoir."
     },
-    "1||Equipements||Dispositif de retenue": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Equipements"
       ],
@@ -1229,8 +1147,7 @@
       ],
       "note": "FK composite sur 3 colonnes : T_DISP_RETENU.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). FK sur code : T_DISP_RETENU.(CODE_DISP_RETEN_TYPE, CODE_FAMILLE, CODE_SF) → DISP_RETENU_TYPE.(CODE_DISP_RETEN_TYPE, CODE_FAMILLE, CODE_SF). Le libellé final est dans TYPE_DISP_RETENU_TYPE.LIB_DISP_RETEN_TYPE via DISP_RETENU_TYPE. Filtrée par famille et sous-famille."
     },
-    "1||Equipements||Dispositif de drainage des eaux de chaussée||Type de dispositif de drainage": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Equipements",
         "Dispositif de drainage des eaux de chaussée"
@@ -1245,8 +1162,7 @@
       ],
       "note": "FK composite sur 3 colonnes : T_ASSAINISSEMENT.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). FK sur code : T_ASSAINISSEMENT.(CODE_ASSAINISSEMENT, CODE_FAMILLE, CODE_SF) → DISP_ASSAINISSEMENT.(CODE_ASSAINISSEMENT, CODE_FAMILLE, CODE_SF). Le libellé final est dans TYPE_DISP_ASSAINISSEMENT via DISP_ASSAINISSEMENT. Filtrée par famille et sous-famille."
     },
-    "1||Equipements||Dispositif de drainage des eaux de chaussée||Nombre": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Equipements",
         "Dispositif de drainage des eaux de chaussée"
@@ -1261,8 +1177,7 @@
       ],
       "note": "NUMBER(2), pas de FK. Quantité de dispositifs de drainage. Même ligne T_ASSAINISSEMENT que le type de dispositif."
     },
-    "1||Autres équipements||Réseau porté - Nature / Localisation||Nature du réseau porté": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Autres équipements",
         "Réseau porté - Nature / Localisation"
@@ -1277,8 +1192,7 @@
       ],
       "note": "FK composite sur 3 colonnes : T_RES_PORTE.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). FK sur code : T_RES_PORTE.(CODE_RES_P_NAT, CODE_FAMILLE, CODE_SF) → RESEAU_P_NATURE.(CODE_RES_P_NAT, CODE_FAMILLE, CODE_SF). Le libellé final est dans TYPE_RESEAU_P_NATURE via RESEAU_P_NATURE. Nature : eau, électricité, télécoms, gaz, etc."
     },
-    "1||Autres équipements||Réseau porté - Nature / Localisation||Localisation du réseau porté": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Autres équipements",
         "Réseau porté - Nature / Localisation"
@@ -1293,8 +1207,7 @@
       ],
       "note": "FK composite sur 3 colonnes dans la même ligne T_RES_PORTE : T_RES_PORTE.(CODE_RES_P_LOC, CODE_FAMILLE, CODE_SF) → RESEAU_P_LOCALISATION.(CODE_RES_P_LOC, CODE_FAMILLE, CODE_SF). Le libellé final est dans TYPE_RESEAU_P_LOCALISATION. Localisation : sous tablier, en encorbellement, en caniveau, etc."
     },
-    "1||Autres équipements||Réseau porté - Nature / Localisation||Diamètre en mm": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Autres équipements",
         "Réseau porté - Nature / Localisation"
@@ -1309,8 +1222,7 @@
       ],
       "note": "NUMBER(7,2), pas de FK. Diamètre du réseau porté en millimètres. Même ligne T_RES_PORTE que nature et localisation."
     },
-    "1||Autres équipements||Dispositif permanent de visite": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Autres équipements"
       ],
@@ -1324,8 +1236,7 @@
       ],
       "note": "FK composite sur 3 colonnes : T_DISP_VISITE.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). FK sur code : T_DISP_VISITE.(CODE_DISP_VISITE, CODE_FAMILLE, CODE_SF) → DISP_PERMAN_VISITE.(CODE_DISP_VISITE, CODE_FAMILLE, CODE_SF). Le libellé final est dans TYPE_DISP_PERMAN_VISITE via DISP_PERMAN_VISITE. Équipements d'accès inspection permanents : passerelles, échelles, nacelles fixes."
     },
-    "1||Autres équipements||Dispositif permanent de suivi": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Autres équipements"
       ],
@@ -1339,8 +1250,7 @@
       ],
       "note": "FK composite sur 3 colonnes : T_DISP_SUIVI.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). FK sur code : T_DISP_SUIVI.(CODE_DISP_SUIV, CODE_FAMILLE, CODE_SF) → DISP_PERMAN_SUIVI.(CODE_DISP_SUIV, CODE_FAMILLE, CODE_SF). Le libellé final est dans TYPE_DISP_PERMAN_SUIVI via DISP_PERMAN_SUIVI. Instruments de surveillance permanente : jauges de fissuration, capteurs de déplacement."
     },
-    "1||Commentaires||Commentaires": {
-      "screen": "Détails Ouvrage",
+    {
       "path": [
         "Commentaires"
       ],
@@ -1353,9 +1263,10 @@
         }
       ],
       "note": " composite : COMMENTAIRE_OARG.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). Aussi : COMMENTAIRE_OARG.CODE_PROV → PROVINCE.CODE_PROV. COMMENTAIRE VARCHAR2(500), texte libre. Une ligne par ouvrage. Stocké dans une table séparée pour permettre un suivi indépendant via CTRL1."
-    },
-    "2||Ouvrage sur:": {
-      "screen": "Visite",
+    }
+  ],
+  "Visite": [
+    {
       "path": [],
       "field": "Ouvrage sur:",
       "type": "Valeur importée",
@@ -1367,8 +1278,7 @@
       ],
       "note": "Valeur importée depuis le franchissement. Le dashboard affiche le libellé de ce que l'ouvrage franchit via FRANADMIN.CODE_VPT → VOIES_PORTEE_TYPE.LIB_VP_TYPE. Chemin : VISITE.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA) → OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT → FRANADMIN.CODE_VPT. Pas d'insertion pour ce champ."
     },
-    "2||Numéro": {
-      "screen": "Visite",
+    {
       "path": [],
       "field": "Numéro",
       "type": "Valeur importée",
@@ -1380,8 +1290,7 @@
       ],
       "note": "Valeur importée depuis l'ouvrage — affiché en lecture seule dans l'en-tête visite. NUMOA = numéro séquentiel de l'ouvrage dans le franchissement. Chemin : VISITE.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA) → OARG.NUMOA. Pas d'insertion pour ce champ dans VISITE."
     },
-    "2||Pk": {
-      "screen": "Visite",
+    {
       "path": [],
       "field": "Pk",
       "type": "Valeur importée",
@@ -1393,8 +1302,7 @@
       ],
       "note": "Valeur importée depuis le franchissement. Le dashboard affiche FRANADMIN.VP_PK. Chemin : VISITE.IDENTIFIANT → OARG.IDENTIFIANT → FRANADMIN.IDENTIFIANT → FRANADMIN.VP_PK. Pas d'insertion pour ce champ."
     },
-    "2||Famille OA": {
-      "screen": "Visite",
+    {
       "path": [],
       "field": "Famille OA",
       "type": "Valeur importée",
@@ -1406,24 +1314,21 @@
       ],
       "note": "FK déclarée : VISITE.CODE_FAMILLE → FAMILLE_OA.CODE_FAMILLE. Le dashboard affiche FAMILLE_OA.LIB_FAMILLE. Dénormalisé dans VISITE pour filtrage. CODE_FAMILLE conditionne les listes de parties d'ouvrage, notes, et actions."
     },
-    "2||Retour Ouvrage": {
-      "screen": "Visite",
+    {
       "path": [],
       "field": "Retour Ouvrage",
       "type": "Bouton",
       "cols": [],
       "note": "Bouton de navigation pure — retour à l'écran Détails Ouvrage. Aucune donnée affichée ou stockée."
     },
-    "2||Retour Franchissement": {
-      "screen": "Visite",
+    {
       "path": [],
       "field": "Retour Franchissement",
       "type": "Bouton",
       "cols": [],
       "note": "Bouton de navigation pure — retour à l'écran Franchissement. Aucune donnée affichée ou stockée."
     },
-    "2||Saisir/Afficher Photos": {
-      "screen": "Visite",
+    {
       "path": [],
       "field": "Saisir/Afficher Photos",
       "type": "Bouton",
@@ -1435,8 +1340,7 @@
       ],
       "note": "Photos de la visite courante. FK composite : T_ALBUM_PHOTOS.(IDENTIFIANT, NUMOA) → OARG.(IDENTIFIANT, NUMOA). Colonnes : NUM_ORDRE (séquence), IMAGE (BLOB), COMMENTAIRE, DATE_PHOTOS. Pour la migration : photos de visite à insérer dans T_ALBUM_PHOTOS avec le bon (IDENTIFIANT, NUMOA)."
     },
-    "2||Tableau visites||Numéro visite": {
-      "screen": "Visite",
+    {
       "path": [
         "Tableau visites"
       ],
@@ -1450,8 +1354,7 @@
       ],
       "note": "Numéro séquentiel de la visite pour cet ouvrage. NUMBER(2). Avec (IDENTIFIANT, NUMOA) forme la clé composite primaire de VISITE. La clé PK complète est : VISITE.(IDENTIFIANT, NUMOA, NUM_VISITE)."
     },
-    "2||Tableau visites||Type de la Visite": {
-      "screen": "Visite",
+    {
       "path": [
         "Tableau visites"
       ],
@@ -1465,8 +1368,7 @@
       ],
       "note": "FK déclarée : VISITE.CODE_VISITE → TYPE_VISITE.CODE_VISITE. Le dashboard affiche TYPE_VISITE.LIB_VISITE. Types : IDP (Inspection Détaillée Périodique), IS (Inspection Spéciale), VR (Visite Rapide), etc. La valeur stockée est le code VARCHAR2(4)."
     },
-    "2||Tableau visites||Date de la Visite": {
-      "screen": "Visite",
+    {
       "path": [
         "Tableau visites"
       ],
@@ -1480,8 +1382,7 @@
       ],
       "note": "Type DATE, pas de FK. Date de réalisation de la visite. Dans les données d'exemple : 2012-10-10."
     },
-    "2||Synthèse de l'état de l'ouvrage||Partie d'ouvrage": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1495,8 +1396,7 @@
       ],
       "note": "FK composite déclarée : T_SYNTHESE_OA.(CODE_CL_ETAT, CODE_PARTIE_OUV, CODE_FAMILLE) → NOTE.(CODE_CL_ETAT, CODE_PARTIE_OUV, CODE_FAMILLE). Aussi : T_SYNTHESE_OA.(IDENTIFIANT, NUMOA, NUM_VISITE) → VISITE.(IDENTIFIANT, NUMOA, NUM_VISITE). Valeur automatique — les parties d'ouvrage sont S, F, E, P (Superstructure, Fondations, Equipements, Protections), générées par l'application pour chaque visite."
     },
-    "2||Synthèse de l'état de l'ouvrage||Ancienne classe d'état": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1510,8 +1410,7 @@
       ],
       "note": "Valeur affichée en lecture seule — importée depuis la visite précédente. Stockée dans T_SYNTHESE_OA.ANCIEN_CODE_CL_ETAT VARCHAR2(4). Code de la classe d'état de la visite précédente pour cette partie d'ouvrage. Résolu via NOTE.LIB_CL_ETAT pour l'affichage."
     },
-    "2||Synthèse de l'état de l'ouvrage||Nouvelle classe d'état": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1525,8 +1424,7 @@
       ],
       "note": "FK composite sur 3 colonnes : T_SYNTHESE_OA.(CODE_CL_ETAT, CODE_PARTIE_OUV, CODE_FAMILLE) → NOTE.(CODE_CL_ETAT, CODE_PARTIE_OUV, CODE_FAMILLE). Le dashboard affiche NOTE.LIB_CL_ETAT. La valeur stockée est le code. La liste est filtrée par partie d'ouvrage et famille. Exemples : 1, 2, 3U, 3, 4, 5SU, etc."
     },
-    "2||Synthèse de l'état de l'ouvrage||Risque usager U": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1540,8 +1438,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Indique si un risque pour l'usager est identifié sur cette partie d'ouvrage. Le suffixe U dans le dashboard désigne ce risque usager. Pas de FK."
     },
-    "2||Synthèse de l'état de l'ouvrage||Evolution manifeste par rapport à la précédente visite ou inspection": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1555,8 +1452,7 @@
       ],
       "note": "Texte libre VARCHAR2, pas de FK directe. Décrit l'évolution observable depuis la visite précédente. Note : les tables EVOLUTION_MANIF et EVOLUTION_MANIF_NE existent dans le schéma mais T_SYNTHESE_OA.EVOLUTION_MANIFESTE est une colonne texte libre sans FK déclarée vers ces tables."
     },
-    "2||Synthèse de l'état de l'ouvrage||Conclusion / Type d'intervention": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1570,8 +1466,7 @@
       ],
       "note": "Valeur automatique affichée en lecture seule. Dérivée de T_SYNTHESE_OA.CODE_CL_ETAT via la table NOTE : NOTE.(CODE_CL_ETAT, CODE_PARTIE_OUV, CODE_FAMILLE) → NOTE.LIB_TYPE_INT. Le type d'intervention est automatiquement déterminé par la classe d'état choisie. Pas d'insertion séparée — même ligne NOTE que Nouvelle classe d'état."
     },
-    "2||Synthèse de l'état de l'ouvrage||Ensemble de l'ouvrage": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1585,8 +1480,7 @@
       ],
       "note": "Note globale de l'ouvrage VARCHAR2(4). Stockée dans VISITE, pas dans T_SYNTHESE_OA. Résumé synthétique de l'état général. Dans les données d'exemple : '5SU', '3PU*', '5S', '2EP'. Pas de FK déclarée."
     },
-    "2||Synthèse de l'état de l'ouvrage||Conclusion générale de l'ouvrage": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1600,8 +1494,7 @@
       ],
       "note": "FK composite déclarée : VISITE.(CODE_FAMILLE, CODE_CONCL_AMENAG) → CONCL_AMENAG.(CODE_FAMILLE, CODE_CONCL_AMENAG). Le dashboard affiche le libellé via CONCL_AMENAG.CODE_CONCL_AMENAG → TYPE_AMENAGEMENT.LIB_CONCL_AMENAG. La liste est filtrée par CODE_FAMILLE. La valeur stockée est le code VARCHAR2."
     },
-    "2||Synthèse de l'état de l'ouvrage||Montant estimé de l'aménagement": {
-      "screen": "Visite",
+    {
       "path": [
         "Synthèse de l'état de l'ouvrage"
       ],
@@ -1615,8 +1508,7 @@
       ],
       "note": "NUMBER, pas de FK. Montant estimé du coût d'aménagement ou d'intervention en dirhams ou KDH. Dans les données d'exemple : 100, 150, 105. Stocké directement dans VISITE."
     },
-    "2||Régime de surveillance||Ensemble de l'ouvrage||Type de surveillance": {
-      "screen": "Visite",
+    {
       "path": [
         "Régime de surveillance",
         "Ensemble de l'ouvrage"
@@ -1631,8 +1523,7 @@
       ],
       "note": "FK déclarée : T_REGIME_SURVEILLANCE.CODE_TYPE_SURV → TYPE_SURVEILLANCE.CODE_TYPE_SURV. Le dashboard affiche TYPE_SURVEILLANCE.LIB_TYPE_SURV. FK composite sur la visite : T_REGIME_SURVEILLANCE.(IDENTIFIANT, NUMOA, NUM_VISITE) → VISITE.(IDENTIFIANT, NUMOA, NUM_VISITE). La valeur stockée est le code VARCHAR2(4)."
     },
-    "2||Régime de surveillance||Ensemble de l'ouvrage||Mois": {
-      "screen": "Visite",
+    {
       "path": [
         "Régime de surveillance",
         "Ensemble de l'ouvrage"
@@ -1647,8 +1538,7 @@
       ],
       "note": "NUMBER, pas de FK. Mois de la prochaine surveillance recommandée (1-12). Même ligne T_REGIME_SURVEILLANCE que Type de surveillance."
     },
-    "2||Régime de surveillance||Ensemble de l'ouvrage||Année": {
-      "screen": "Visite",
+    {
       "path": [
         "Régime de surveillance",
         "Ensemble de l'ouvrage"
@@ -1663,8 +1553,7 @@
       ],
       "note": "NUMBER, pas de FK. Année de la prochaine surveillance recommandée. Même ligne T_REGIME_SURVEILLANCE que Type de surveillance et Mois."
     },
-    "2||Régime de surveillance||Parties de l'ouvrage à surveiller en particulier||Superstructures": {
-      "screen": "Visite",
+    {
       "path": [
         "Régime de surveillance",
         "Parties de l'ouvrage à surveiller en particulier"
@@ -1679,8 +1568,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Indique si les superstructures doivent faire l'objet d'une surveillance particulière. Stocké dans T_REGIME_SURVEILLANCE avec FK composite sur PARTIE_OUVRAGE : T_REGIME_SURVEILLANCE.(CODE_PARTIE_OUV, CODE_FAMILLE) → PARTIE_OUVRAGE.(CODE_PARTIE_OUV, CODE_FAMILLE)."
     },
-    "2||Régime de surveillance||Parties de l'ouvrage à surveiller en particulier||Fondation": {
-      "screen": "Visite",
+    {
       "path": [
         "Régime de surveillance",
         "Parties de l'ouvrage à surveiller en particulier"
@@ -1695,8 +1583,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Indique si les fondations doivent faire l'objet d'une surveillance particulière. Même ligne T_REGIME_SURVEILLANCE que Superstructures."
     },
-    "2||Régime de surveillance||Parties de l'ouvrage à surveiller en particulier||Equipement": {
-      "screen": "Visite",
+    {
       "path": [
         "Régime de surveillance",
         "Parties de l'ouvrage à surveiller en particulier"
@@ -1711,8 +1598,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Indique si les équipements doivent faire l'objet d'une surveillance particulière. Même ligne T_REGIME_SURVEILLANCE que Superstructures."
     },
-    "2||Régime de surveillance||Parties de l'ouvrage à surveiller en particulier||Protection": {
-      "screen": "Visite",
+    {
       "path": [
         "Régime de surveillance",
         "Parties de l'ouvrage à surveiller en particulier"
@@ -1727,8 +1613,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Indique si les protections doivent faire l'objet d'une surveillance particulière. Même ligne T_REGIME_SURVEILLANCE que Superstructures."
     },
-    "2||Régime de surveillance||Commentaires": {
-      "screen": "Visite",
+    {
       "path": [
         "Régime de surveillance"
       ],
@@ -1742,8 +1627,7 @@
       ],
       "note": "VARCHAR2, texte libre, pas de FK. Commentaire sur le régime de surveillance recommandé. Stocké dans T_REGIME_SURVEILLANCE — même table que Type de surveillance, Mois, Année et les 4 booléens."
     },
-    "2||Actions prévues||Tableau récapitulatif des notes et décisions par famille de composants||Familles de composants||S - Superstructure": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau récapitulatif des notes et décisions par famille de composants",
@@ -1759,8 +1643,7 @@
       ],
       "note": "Valeur automatique — note de la partie Superstructure (CODE_PARTIE_OUV = 'S'). Ligne T_SYNTHESE_OA filtrée par CODE_PARTIE_OUV = 'S'. Le dashboard l'affiche dans le tableau récapitulatif. Résolu via NOTE.(CODE_CL_ETAT, CODE_PARTIE_OUV, CODE_FAMILLE)."
     },
-    "2||Actions prévues||Tableau récapitulatif des notes et décisions par famille de composants||Familles de composants||F - Fondations et Appuis": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau récapitulatif des notes et décisions par famille de composants",
@@ -1776,8 +1659,7 @@
       ],
       "note": "Valeur automatique — note de la partie Fondations (CODE_PARTIE_OUV = 'F'). Même logique que S - Superstructure, filtrée par CODE_PARTIE_OUV = 'F'."
     },
-    "2||Actions prévues||Tableau récapitulatif des notes et décisions par famille de composants||Familles de composants||E - Equipements": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau récapitulatif des notes et décisions par famille de composants",
@@ -1793,8 +1675,7 @@
       ],
       "note": "Valeur automatique — note de la partie Equipements (CODE_PARTIE_OUV = 'E'). Même logique que S, filtrée par CODE_PARTIE_OUV = 'E'."
     },
-    "2||Actions prévues||Tableau récapitulatif des notes et décisions par famille de composants||Familles de composants||P - Protections et voisinage": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau récapitulatif des notes et décisions par famille de composants",
@@ -1810,8 +1691,7 @@
       ],
       "note": "Valeur automatique — note de la partie Protections (CODE_PARTIE_OUV = 'P'). Même logique que S, filtrée par CODE_PARTIE_OUV = 'P'."
     },
-    "2||Actions prévues||Tableau récapitulatif des notes et décisions par famille de composants||Note": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau récapitulatif des notes et décisions par famille de composants"
@@ -1826,8 +1706,7 @@
       ],
       "note": "Valeur importée depuis T_SYNTHESE_OA.CODE_CL_ETAT pour la partie concernée. Le dashboard affiche le code de classe d'état dans la colonne Note du tableau récapitulatif. Même colonne que Nouvelle classe d'état dans la Synthèse — c'est une redisplay du même champ."
     },
-    "2||Actions prévues||Tableau récapitulatif des notes et décisions par famille de composants||Décision (type) associée à la note": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau récapitulatif des notes et décisions par famille de composants"
@@ -1842,8 +1721,7 @@
       ],
       "note": "Valeur automatique dérivée de CODE_CL_ETAT via la table NOTE. Le dashboard affiche NOTE.LIB_TYPE_INT — le type d'intervention associé à la classe d'état. Chemin : T_SYNTHESE_OA.CODE_CL_ETAT → NOTE.CODE_CL_ETAT → NOTE.LIB_TYPE_INT. Pas d'insertion séparée."
     },
-    "2||Actions prévues||Tableau des types d'action d'entretien et de réparation||N° d'action prévue": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau des types d'action d'entretien et de réparation"
@@ -1858,8 +1736,7 @@
       ],
       "note": "Numéro séquentiel de l'action prévue NUMBER(2). FK composite principale : T_ACTIONS_PREVUES.(IDENTIFIANT, NUMOA, NUM_VISITE, CODE_PARTIE_OUV) → T_SYNTHESE_OA.(IDENTIFIANT, NUMOA, NUM_VISITE, CODE_PARTIE_OUV). Ordre d'insertion : VISITE → T_SYNTHESE_OA → T_ACTIONS_PREVUES."
     },
-    "2||Actions prévues||Tableau des types d'action d'entretien et de réparation||Type d'action d'entretien et de réparation": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau des types d'action d'entretien et de réparation"
@@ -1874,8 +1751,7 @@
       ],
       "note": "FK composite sur 4 colonnes : T_ACTIONS_PREVUES.(CODE_FAMILLE, NUM_ACTION, CODE_CLASSE, CODE_PARTIE_OUV) → ACTION.(CODE_FAMILLE, NUM_ACTION, CODE_CLASSE, CLASSE). Le dashboard affiche le libellé via ACTION.NUM_ACTION → TYPE_ACTION.LIB_ACTION. La liste est filtrée par famille et partie d'ouvrage. La valeur stockée est le numéro d'action NUMBER."
     },
-    "2||Actions prévues||Tableau des types d'action d'entretien et de réparation||Intervention lourde (O/N)": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau des types d'action d'entretien et de réparation"
@@ -1890,8 +1766,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Indique si l'action constitue une intervention lourde (travaux importants) ou légère (entretien courant). Pas de FK."
     },
-    "2||Actions prévues||Tableau des types d'action d'entretien et de réparation||Estimation": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau des types d'action d'entretien et de réparation"
@@ -1906,8 +1781,7 @@
       ],
       "note": "NUMBER, pas de FK. Coût estimé de l'action prévue en dirhams our KDH. Stocké directement dans T_ACTIONS_PREVUES."
     },
-    "2||Actions prévues||Tableau des types d'action d'entretien et de réparation||Exécutant": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau des types d'action d'entretien et de réparation"
@@ -1922,8 +1796,7 @@
       ],
       "note": "VARCHAR2(100), pas de FK déclarée malgré l'existence de la table EXECUTANT dans le schéma. Champ texte libre dans T_ACTIONS_PREVUES — la table EXECUTANT (colonnes : NUM_LIGNE, LIB_EXECUTANT) existe mais n'est pas liée par FK. Mapping partiel à documenter et à confirmer avec le client."
     },
-    "2||Actions prévues||Tableau des types d'action d'entretien et de réparation||Urgence (O/N)": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau des types d'action d'entretien et de réparation"
@@ -1938,8 +1811,7 @@
       ],
       "note": "Booléen VARCHAR2(1), valeurs O/N. Indique si l'action est urgente. Pas de FK."
     },
-    "2||Actions prévues||Tableau des types d'action d'entretien et de réparation||Date limite réalisation": {
-      "screen": "Visite",
+    {
       "path": [
         "Actions prévues",
         "Tableau des types d'action d'entretien et de réparation"
@@ -1954,8 +1826,7 @@
       ],
       "note": "Type DATE, pas de FK. Date limite de réalisation de l'action prévue."
     },
-    "2||Prochaine visite||Prochaine visite ou inspection||Type de la visite": {
-      "screen": "Visite",
+    {
       "path": [
         "Prochaine visite",
         "Prochaine visite ou inspection"
@@ -1970,8 +1841,7 @@
       ],
       "note": "FK déclarée : T_PROCHAINE_VISITE.CODE_VISITE → TYPE_VISITE.CODE_VISITE. Le dashboard affiche TYPE_VISITE.LIB_VISITE. FK composite sur la visite courante : T_PROCHAINE_VISITE.(IDENTIFIANT, NUMOA, NUM_VISITE) → VISITE.(IDENTIFIANT, NUMOA, NUM_VISITE). Ordre d'insertion : VISITE → T_PROCHAINE_VISITE."
     },
-    "2||Prochaine visite||Prochaine visite ou inspection||Mois": {
-      "screen": "Visite",
+    {
       "path": [
         "Prochaine visite",
         "Prochaine visite ou inspection"
@@ -1986,8 +1856,7 @@
       ],
       "note": "NUMBER, pas de FK. Mois recommandé pour la prochaine visite (1-12). Même ligne T_PROCHAINE_VISITE que Type de la visite."
     },
-    "2||Prochaine visite||Prochaine visite ou inspection||Année": {
-      "screen": "Visite",
+    {
       "path": [
         "Prochaine visite",
         "Prochaine visite ou inspection"
@@ -2002,8 +1871,7 @@
       ],
       "note": "NUMBER, pas de FK. Année recommandée pour la prochaine visite. Même ligne T_PROCHAINE_VISITE que Type de la visite et Mois."
     },
-    "2||Prochaine visite||Prochaine visite ou inspection||Restriction de la circulation pendant la visite": {
-      "screen": "Visite",
+    {
       "path": [
         "Prochaine visite",
         "Prochaine visite ou inspection"
@@ -2018,8 +1886,7 @@
       ],
       "note": "FK déclarée : T_PROCHAINE_VISITE.CODE_RESTR_CIRCUL → RESTRICT_CIRCUL.CODE_RESTR_CIRCUL. Le dashboard affiche RESTRICT_CIRCUL.LIB_RESTR_CIRCUL. La valeur stockée est le code VARCHAR2(4). Indique si une restriction de circulation sera nécessaire pendant la prochaine inspection."
     },
-    "2||Prochaine visite||Commentaires": {
-      "screen": "Visite",
+    {
       "path": [
         "Prochaine visite"
       ],
@@ -2033,8 +1900,7 @@
       ],
       "note": "VARCHAR2, texte libre, pas de FK. Commentaire sur la prochaine visite recommandée. Stocké dans T_PROCHAINE_VISITE — même table que Type, Mois, Année et Restriction."
     },
-    "2||Prochaine visite||Tableau de matériel à prévoir": {
-      "screen": "Visite",
+    {
       "path": [
         "Prochaine visite"
       ],
@@ -2048,5 +1914,5 @@
       ],
       "note": "FK déclarée : T_MATERIEL.CODE_MAT_A_PREV → MATERIEL_A_PREVOIR.CODE_MAT_A_PREV. Le dashboard affiche MATERIEL_A_PREVOIR.LIB_MAT_A_PREV. FK composite sur la prochaine visite : T_MATERIEL.(IDENTIFIANT, NUMOA, NUM_VISITE) → T_PROCHAINE_VISITE.(IDENTIFIANT, NUMOA, NUM_VISITE). Plusieurs matériels possibles par visite. Ordre d'insertion : VISITE → T_PROCHAINE_VISITE → T_MATERIEL."
     }
-  }
+  ]
 }
